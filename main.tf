@@ -86,3 +86,7 @@ resource "oci_container_instances_container_instance" "main" {
     nsg_ids               = [oci_core_network_security_group.main.id]
   }
 }
+
+data "oci_core_vnic" "main" {
+  vnic_id = oci_container_instances_container_instance.main.vnics[0].vnic_id
+}
