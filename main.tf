@@ -85,6 +85,10 @@ resource "oci_container_instances_container_instance" "main" {
     is_public_ip_assigned = var.is_public_ip_assigned
     nsg_ids               = [oci_core_network_security_group.main.id]
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 data "oci_core_vnic" "main" {
